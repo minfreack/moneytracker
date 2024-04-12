@@ -1,6 +1,5 @@
 "use client";
 
-import { FC } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@nextui-org/switch";
 import { useTheme } from "next-themes";
@@ -9,12 +8,7 @@ import clsx from "clsx";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/app/components/icons";
 
-export interface ThemeSwitchProps {
-	className?: string;
-	classNames?: SwitchProps["classNames"];
-}
-
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({
+export const ThemeSwitch = ({
 	className,
 	classNames,
 }) => {
