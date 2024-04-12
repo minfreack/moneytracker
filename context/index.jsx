@@ -9,10 +9,11 @@ import { types } from './cashflow/cashflowReducer';
 
 export const SocketContext = createContext();
 
+const url = process.env.NEXT_PUBLIC_API_URL
 
 export const SocketProvider = ({ children }) => {
 
-    const {socket, online, connectarSocket, desconectarSocket} = useSocket('http://localhost:8080');
+    const {socket, online, connectarSocket, desconectarSocket} = useSocket(url);
 
     const { userAuth } = useContext(AuthContext);
 
