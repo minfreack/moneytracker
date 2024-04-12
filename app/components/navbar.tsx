@@ -51,6 +51,7 @@ export const Navbar = () => {
 		/>
 	);
 
+	// @ts-ignore
 	return (
 		<NextUINavbar maxWidth="full" position="sticky">
 			{/* <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -92,7 +93,7 @@ export const Navbar = () => {
 					<Link isExternal href={siteConfig.links.github} aria-label="Github">
 						<GithubIcon className="text-default-500" />
 					</Link> */}
-					<ThemeSwitch />
+					<ThemeSwitch className="" classNames="" />
 				</NavbarItem>
 				{/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
@@ -113,7 +114,7 @@ export const Navbar = () => {
 				{/* <Link isExternal href={siteConfig.links.github} aria-label="Github">
 					<GithubIcon className="text-default-500" />
 				</Link> */}
-				<ThemeSwitch />
+				<ThemeSwitch className="" classNames="" />
 				{/* <NavbarMenuToggle /> */}
 			</NavbarContent>
 
