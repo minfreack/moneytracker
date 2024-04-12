@@ -181,7 +181,7 @@ export default function Transactions(){
             <tbody className="bg-content1 rounded-lg h-60">
                 {
                     filterTransactions?.map((transaction) => (
-                        <tr className="px-2 py-2 grid grid-cols-[27.5%_27.5%_20%_20%] lg:grid-cols-[35%_27.5%_22.5%_15%]">
+                        <tr key={transaction?.date} className="px-2 py-2 grid grid-cols-[27.5%_27.5%_20%_20%] lg:grid-cols-[35%_27.5%_22.5%_15%]">
                             <td className="truncate">{transaction?.type === 'income' ? 'Ingreso' : transaction?.name}</td>
                             <td><Chip className="cursor-pointer w-full truncate" onClick={() => setFilters({...filters, category: transaction?.type === 'income' ? 'Income' : transaction?.category })}>{transaction?.type === 'income' ? 'Ingreso' : transaction?.category}</Chip></td>
                             <td className="truncate">${transaction?.amount}</td>
