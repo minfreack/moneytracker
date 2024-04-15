@@ -12,8 +12,15 @@ const PrivateRoute = ({ children }: any) => {
   useEffect(() => {
     const checkAuthentication = async () => {
       if (!userAuth?.auth?.auth) {
-        await router.push('/login'); 
-        setLoading(false); 
+        if(pathname === '/login' || pathname === '/register') {
+            setLoading(false);
+            return;
+        }
+        if(pathname === '/dashboard') {
+            await router.push('/login');
+            setLoading(false);
+            return;
+        }
       } else if (pathname === '/login' || pathname === '/register') {
         await router.push('/dashboard');
         setLoading(false); 
