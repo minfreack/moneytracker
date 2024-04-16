@@ -1,3 +1,4 @@
+'use client'
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -28,8 +29,11 @@ import {
 } from "@/app/components/icons";
 
 import { Logo } from "@/app/components/icons";
+import {useSession} from "@/hooks/useSession";
 
 export const Navbar = () => {
+	const { onSignOut } = useSession();
+
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -84,16 +88,10 @@ export const Navbar = () => {
 				justify="end"
 			>
 				<NavbarItem className="hidden sm:flex gap-2">
-					{/* <Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
-						<TwitterIcon className="text-default-500" />
-					</Link>
-					<Link isExternal href={siteConfig.links.discord} aria-label="Discord">
-						<DiscordIcon className="text-default-500" />
-					</Link>
-					<Link isExternal href={siteConfig.links.github} aria-label="Github">
-						<GithubIcon className="text-default-500" />
-					</Link> */}
 					<ThemeSwitch className="" classNames="" />
+					<Link onClick={async() => await onSignOut()} href='/login' aria-label="Cerrar sesión">
+						Cerrar sesión
+					</Link>
 				</NavbarItem>
 				{/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
@@ -111,10 +109,10 @@ export const Navbar = () => {
 			</NavbarContent>
 
 			<NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-				{/* <Link isExternal href={siteConfig.links.github} aria-label="Github">
-					<GithubIcon className="text-default-500" />
-				</Link> */}
 				<ThemeSwitch className="" classNames="" />
+				<Link onClick={async() => await onSignOut()} href='/login' aria-label="Cerrar sesión">
+					Cerrar sesión
+				</Link>
 				{/* <NavbarMenuToggle /> */}
 			</NavbarContent>
 

@@ -15,6 +15,7 @@ import { types } from "@/context/cashflow/cashflowReducer";
 import { Select, SelectItem } from "@nextui-org/select";
 import groupTransactionsByDate, { groupTransactionsByCategory } from "@/utils/transactions";
 import { AreaChart, DonutChart, List, ListItem } from "@tremor/react";
+import PrivateRoute from "@/app/components/routes";
 
 type Filters = {
     name: string;
@@ -113,7 +114,7 @@ export default function Transactions(){
     }, [userAuth]);
     
     return (
-        <>
+        <PrivateRoute>
             <Link href="/dashboard">
                     <p className="mt-10 mb-5 text-sm inline-flex items-center gap-x-2 cursor-pointer"><FaArrowLeft/> Volver al dashboard </p>
              </Link> 
@@ -220,6 +221,6 @@ export default function Transactions(){
 
                 </article>
             </div>
-        </>
+        </PrivateRoute>
     )
 }

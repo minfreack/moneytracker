@@ -16,6 +16,7 @@ import { AuthContext } from "@/context/auth";
 import { getTransactions } from "@/services/api/transactions";
 import { types } from "@/context/cashflow/cashflowReducer";
 import { Select, SelectItem } from "@nextui-org/select";
+import PrivateRoute from "@/app/components/routes";
 
 type Filters = {
     name: string;
@@ -104,7 +105,7 @@ export default function Transactions(){
     }, [userAuth]);
     
     return (
-        <>
+        <PrivateRoute>
             <Link href="/dashboard">
                     <p className="mt-10 mb-5 text-sm inline-flex items-center gap-x-2 cursor-pointer"><FaArrowLeft/> Volver al dashboard </p>
              </Link> 
@@ -194,6 +195,6 @@ export default function Transactions(){
             </table>
         </div>
     </section>
-        </>
+        </PrivateRoute>
     )
 }
