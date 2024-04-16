@@ -14,9 +14,9 @@ export const CashFlow = () => {
     
     return (
         <>
-        <div className="bg-content2 px-6 py-4 rounded-lg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
+        <div className="bg-content2 px-6 py-4 rounded-lg grid grid-cols-1 lg:grid-cols-3 gap-y-6 gap-x-8">
             <h2 className="text-2xl font-semibold col-span-3">💸  &nbsp; Flujo</h2>
-            <Card className="col-span-3 md:col-span-1" isBlurred>
+            <Card className="col-span-3 lg:col-span-1" isBlurred>
                 <CardBody className="gap-y-2.5 px-5 py-6">
                     <div className="flex w-full justify-between">
                     <h3>Bolsa actual</h3>
@@ -29,14 +29,14 @@ export const CashFlow = () => {
                     <p className="text-4xl font-medium">${cashflow?.total}</p>
                 </CardBody>
             </Card>
-            <Card className="col-span-1" isBlurred>
+            <Card className="col-span-3 lg:col-span-1" isBlurred>
                 <CardBody className="gap-y-2.5 px-5 py-6">
                     <h3>Tus ingresos</h3>
                     <p onClick={() => setIncomeModalOpen(true)} className="bg-content3 cursor-pointer w-6 h-6 flex items-center justify-center pb-1 absolute right-4 rounded-full">+</p>
                     <p className="text-4xl font-medium">${cashflow?.income}</p>
                 </CardBody>
             </Card>
-            <Card className="col-span-3 md:col-span-1" isBlurred>
+            <Card className="col-span-3 lg:col-span-1" isBlurred>
                 <CardBody className="gap-y-2.5 px-5 py-6">
                     <h3>Tus gastos</h3>
                     <p onClick={() => setSpentModalOpen(true)} className="bg-content3 cursor-pointer w-6 h-6 flex items-center justify-center pb-1 absolute right-4 rounded-full">+</p>

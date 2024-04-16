@@ -68,7 +68,7 @@ export const History = () => {
                 <div className="flex gap-x-4">
                 <Popover placement="left">
                     <PopoverTrigger>
-                        <Button size="sm" variant="light"><IoSearchSharp className="cursor-pointer" size={24}/></Button>
+                        <Button className="order-2 md:order-none" size="sm" variant="light"><IoSearchSharp className="cursor-pointer" size={24}/></Button>
                     </PopoverTrigger>
                     <PopoverContent className="py-2">
                         <Input
@@ -96,19 +96,20 @@ export const History = () => {
                 }
                 </div>
             </div>
-            <table className="mt-4 w-full overflow-x-scroll">
-                <thead className="bg-content3">
-                    <tr className="px-2 rounded-t-lg py-2 grid grid-cols-[27.5%_27.5%_20%_20%] lg:grid-cols-[35%_27.5%_22.5%_15%]">
+            <div className="mt-4 w-full overflow-auto">
+                <table className="w-full">
+                    <thead className="bg-content3">
+                    <tr className="px-2 rounded-t-lg w-[26rem] py-2 grid grid-cols-4 md:w-full md:grid md:grid-cols-[35%_27.5%_22.5%_15%]">
                         <th className="text-start">Nombre</th>
                         <th className="text-start">Categoría</th>
                         <th className="text-start">Cantidad</th>
                         <th className="text-start">Fecha</th>
                     </tr>
-                </thead>
-                <tbody className="bg-content1 rounded-lg h-60">
+                    </thead>
+                    <tbody className="bg-content1 rounded-lg h-60">
                     {
                         filterTransactions?.slice(0, 5)?.map((transaction, index) => (
-                            <tr key={transaction?.date + index} className="px-2 py-2 grid grid-cols-[27.5%_27.5%_20%_20%] lg:grid-cols-[35%_27.5%_22.5%_15%]">
+                            <tr key={transaction?.date + index} className="px-2 py-2 w-[26rem] grid grid-cols-4 md:w-full md:grid-cols-[35%_27.5%_22.5%_15%]">
                                 <td className="truncate">{transaction?.type === 'income' ? 'Ingreso' : transaction?.name}</td>
                                 <td><Chip className="cursor-pointer w-full truncate" onClick={() => setFilters({...filters, category: transaction?.type === 'income' ? 'Income' : transaction?.category })}>{transaction?.type === 'income' ? 'Ingreso' : transaction?.category}</Chip></td>
                                 <td className="truncate">${transaction?.amount}</td>
@@ -116,8 +117,9 @@ export const History = () => {
                             </tr>
                         ))
                     }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </section>
     )
 }

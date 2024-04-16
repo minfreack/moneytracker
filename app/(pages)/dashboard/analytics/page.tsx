@@ -119,13 +119,13 @@ export default function Transactions(){
              </Link> 
             <section className="bg-content2 relative px-6 py-4 rounded-lg mb-10">
            
-                <div className="flex justify-between">
+                <div className="flex flex-col md:flex-row justify-between">
                     <div className="flex w-full flex-col">
                         <h2 className="text-2xl font-semibold col-span-3">📊  &nbsp; Analíticas</h2>
                         <h3 className="pt-1">Tu panel de analíticas</h3>
                     </div>
-                    <div className="flex gap-x-4 items-center">
-                    <Select 
+                    <div className="flex gap-x-4 pt-4 md:pt-0 items-center">
+                    <Select
                     onChange={(e) => {
                         setFilters({...filters, showBy: e.target.value})
                     }}

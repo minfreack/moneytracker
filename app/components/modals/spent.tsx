@@ -12,6 +12,7 @@ import { SocketContext } from "@/context";
 import { AuthContext } from "@/context/auth";
 import toast from "react-hot-toast";
 import dayjs from "dayjs";
+import {log} from "util";
 
 type NewSpent = {
   name: string;
@@ -93,10 +94,12 @@ export const SpentModal = ({isOpen, onClose}: {isOpen: boolean, onClose: () => v
                     label="Selecciona una categoría" 
                     labelPlacement="outside"
                     placeholder="Selecciona una categoría"
-                    
+                    onSelectionChange={(e) => {
+                        setExpenseData({...expenseData, category: e?.toString()})
+                    }}
                   >
                     {categories.map((category) => (
-                      <AutocompleteItem onClick={() => setExpenseData({...expenseData, category: category?.value})} key={category.value} value={category.value}>
+                      <AutocompleteItem key={category.value} value={category.value}>
                         {category.label}
                       </AutocompleteItem>
                     ))}

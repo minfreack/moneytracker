@@ -112,7 +112,7 @@ export default function Transactions(){
         <div className="flex w-full justify-between">
             <h2 className="text-2xl font-semibold col-span-3">💾  &nbsp; Historial</h2>
         </div>
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row justify-between">
             <h3 className="pt-1">Todas tus transacciones</h3>
             <div className="flex gap-x-4 items-center">
             <Select 
@@ -127,7 +127,7 @@ export default function Transactions(){
             </Select>
             <Popover placement="left">
                 <PopoverTrigger>
-                    <Button size="sm" className="h-full" variant="light"><IoSearchSharp className="cursor-pointer" size={24}/></Button>
+                    <Button size="sm" className="h-full order-2 md:order-none" variant="light"><IoSearchSharp className="cursor-pointer" size={24}/></Button>
                 </PopoverTrigger>
                 <PopoverContent className="py-2">
                     <Input
@@ -141,7 +141,7 @@ export default function Transactions(){
             </Popover>
             <Popover placement="left">
                 <PopoverTrigger>
-                    <Button size="sm" className="h-full" variant="light"><IoFilterOutline className="cursor-pointer" size={24} /></Button>
+                    <Button size="sm" className="h-full flex-1" variant="light"><IoFilterOutline className="cursor-pointer" size={24} /></Button>
                 </PopoverTrigger>
                 <PopoverContent>
                     <Switch className="my-2" isSelected={filters?.onlyIncomes} onValueChange={(value) => setFilters({...filters, onlyIncomes: value})} defaultSelected size="sm">Solo ingresos</Switch>
@@ -155,42 +155,44 @@ export default function Transactions(){
             }
             </div>
         </div>
-        <table className="mt-4 w-full overflow-x-scroll">
-            <thead className="bg-content3">
-                <tr className="px-2 rounded-t-lg py-2 grid grid-cols-[27.5%_27.5%_20%_20%] lg:grid-cols-[35%_27.5%_22.5%_15%]">
+        <div className="mt-4 w-full overflow-auto">
+            <table className="w-full">
+                <thead className="bg-content3">
+                <tr className="px-2 rounded-t-lg w-[26rem] py-2 grid grid-cols-4 md:w-full md:grid md:grid-cols-[35%_27.5%_22.5%_15%]">
                     <th className="text-start">Nombre</th>
                     <th className="text-start">Categoría</th>
                     <th className="text-start inline-flex items-center gap-x-2">Cantidad
                         {(filters?.orderDatesIn === 'desc' || filters?.orderDatesIn === '') &&
-                            <IoIosArrowDown className="cursor-pointer" onClick={() => setFilters({...filters, orderDatesIn: 'asc'})}/> 
+                            <IoIosArrowDown className="cursor-pointer" onClick={() => setFilters({...filters, orderDatesIn: 'asc'})}/>
                         }
                         {filters?.orderDatesIn === 'asc' &&
-                          <IoIosArrowDown onClick={() => setFilters({...filters, orderDatesIn: 'desc'})} className="rotate-180 cursor-pointer"/>
+                            <IoIosArrowDown onClick={() => setFilters({...filters, orderDatesIn: 'desc'})} className="rotate-180 cursor-pointer"/>
                         }
                     </th>
-                    <th className="text-start inline-flex items-center gap-x-2">Fecha 
+                    <th className="text-start inline-flex items-center gap-x-2">Fecha
                         {(filters?.orderDatesIn === 'desc' || filters?.orderDatesIn === '') &&
-                            <IoIosArrowDown className="cursor-pointer" onClick={() => setFilters({...filters, orderDatesIn: 'asc'})}/> 
+                            <IoIosArrowDown className="cursor-pointer" onClick={() => setFilters({...filters, orderDatesIn: 'asc'})}/>
                         }
                         {filters?.orderDatesIn === 'asc' &&
-                          <IoIosArrowDown onClick={() => setFilters({...filters, orderDatesIn: 'desc'})} className="rotate-180 cursor-pointer"/>
+                            <IoIosArrowDown onClick={() => setFilters({...filters, orderDatesIn: 'desc'})} className="rotate-180 cursor-pointer"/>
                         }
                     </th>
                 </tr>
-            </thead>
-            <tbody className="bg-content1 rounded-lg h-60">
+                </thead>
+                <tbody className="bg-content1 rounded-lg h-60">
                 {
                     filterTransactions?.map((transaction) => (
-                        <tr key={transaction?.date} className="px-2 py-2 grid grid-cols-[27.5%_27.5%_20%_20%] lg:grid-cols-[35%_27.5%_22.5%_15%]">
+                        <tr key={transaction?.date} className="px-2 py-2 w-[26rem] grid grid-cols-4 md:w-full md:grid-cols-[35%_27.5%_22.5%_15%]">
                             <td className="truncate">{transaction?.type === 'income' ? 'Ingreso' : transaction?.name}</td>
                             <td><Chip className="cursor-pointer w-full truncate" onClick={() => setFilters({...filters, category: transaction?.type === 'income' ? 'Income' : transaction?.category })}>{transaction?.type === 'income' ? 'Ingreso' : transaction?.category}</Chip></td>
                             <td className="truncate">${transaction?.amount}</td>
                             <td className="truncate">{dayjs(transaction?.date).format("DD/MM/YY")}</td>
                         </tr>
                     ))
-                }     
-            </tbody>
-        </table>
+                }
+                </tbody>
+            </table>
+        </div>
     </section>
         </>
     )
