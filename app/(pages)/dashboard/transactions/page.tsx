@@ -115,7 +115,7 @@ export default function Transactions(){
         </div>
         <div className="flex flex-col md:flex-row justify-between">
             <h3 className="pt-1">Todas tus transacciones</h3>
-            <div className="flex gap-x-4 items-center">
+            <div className="flex flex-wrap gap-x-4 items-center">
             <Select 
             onChange={(e) => {
                 setFilters({...filters, showBy: e.target.value})
@@ -128,7 +128,7 @@ export default function Transactions(){
             </Select>
             <Popover placement="left">
                 <PopoverTrigger>
-                    <Button size="sm" className="h-full order-2 md:order-none" variant="light"><IoSearchSharp className="cursor-pointer" size={24}/></Button>
+                    <Button size="sm" className="h-full order-3 md:order-none" variant="light"><IoSearchSharp className="cursor-pointer" size={24}/></Button>
                 </PopoverTrigger>
                 <PopoverContent className="py-2">
                     <Input
@@ -151,7 +151,7 @@ export default function Transactions(){
             </Popover>
             {
                 JSON.stringify(initialState) !== JSON.stringify(filters) && (
-                    <Button onClick={() => setFilters(initialState)} size="sm" variant="light"><IoTrash className="cursor-pointer" size={24} /></Button>
+                    <Button className="order-1 md:order-none" onClick={() => setFilters(initialState)} size="sm" variant="light"><IoTrash className="cursor-pointer" size={24} /></Button>
                 )
             }
             </div>
