@@ -162,7 +162,7 @@ export default function Login(){
                                 isRequired
                                 onChange={onChange}
                             />
-                        <div className="w-full self-end flex gap-x-4">
+                        <div className="w-full self-end flex flex-col md:flex-row gap-x-4">
                             <Button onClick={onSignUpWithGoogle} variant="bordered" className="w-1/3 mt-2">
                                 Iniciar con <FaGoogle />
                             </Button>
