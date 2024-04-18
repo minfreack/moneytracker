@@ -1,15 +1,13 @@
 'use client'
-import { title, subtitle } from "@/app/components/primitives";
 import { AuthContext } from "@/context/auth";
-import {redirect, usePathname, useRouter} from 'next/navigation'
-import {useContext, useEffect, useState} from "react";
+import { useRouter} from 'next/navigation'
+import {useContext, useEffect} from "react";
 
 
 export default function Home() {
 
 	const { userAuth } = useContext(AuthContext);
 	const router = useRouter();
-	const pathname = usePathname();
 
 	useEffect(() => {
 		const checkAuthentication = async () => {
