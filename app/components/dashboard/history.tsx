@@ -64,7 +64,7 @@ export const History = () => {
                 </Link> 
             </div>
             <div className="flex justify-between">
-                <h3 className="pt-1">Tus últimas 5 transacciones</h3>
+                <h3 className="pt-1">Tus últimas transacciones</h3>
                 <div className="flex gap-x-4">
                 <Popover placement="left">
                     <PopoverTrigger>

@@ -125,8 +125,8 @@ export default function Login(){
 
     return (
         <PrivateRoute>
-            <section className="flex h-screen items-center justify-between gap-y-8">
-                <div className="w-full md:w-1/2 xl:w-1/3 flex flex-col gap-y-5">
+            <section className="grid grid-cols-1 lg:grid-cols-2 h-screen items-center justify-between gap-y-8">
+                <div className="w-full xl:w-2/3 flex flex-col gap-y-5 pl-10">
                     <div className="flex flex-col gap-y-2">
                         <h4 className="text-lg font-semibold">Bienvenido de nuevo</h4>
                         <h3 className="text-6xl font-semibold">Iniciar sesión</h3>
@@ -172,9 +172,7 @@ export default function Login(){
                         </div>
                     </form>
                 </div>
-                <div>
-                    Aqui una img
-                </div>
+                <img loading='lazy' src='/money.jpg' className='hidden lg:block h-screen w-full' alt='Money' />
             </section>
         </PrivateRoute>
     )
